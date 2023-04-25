@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paciente index{% endblock %}
+
+{% block body %}
+    <h1>Pacientes registrados</h1>
+     <img title="flaticon icon" class="fotoHome1" width="80px" src="/images/fisioterapiacompany.png">
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Dateborn</th>
+                <th>Dni</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paciente in pacientes %}
+            <tr>
+                
+                <td>{{ paciente.name }}</td>
+                <td>{{ paciente.surname }}</td>
+                <td>{{ paciente.dateborn ? paciente.dateborn|date('Y-m-d') : '' }}</td>
+                <td>{{ paciente.dni }}</td>
+                <td>{{ paciente.telefono }}</td>
+                <td>{{ paciente.direccion }}</td>
+                <td>
+                    <a class="btn btn-success minimarg" href="{{ path('app_paciente_show', {'id': paciente.id}) }}">show</a>
+                    <a  class="btn btn-primary minimarg"  href="{{ path('app_paciente_edit', {'id': paciente.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_paciente_new') }}">Create new</a>
+{% endblock %}

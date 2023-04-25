@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Pato{% endblock %}
+
+{% block body %}
+    <h1>Edit Pato</h1>
+
+    {{ include('pato/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_pato_index') }}">back to list</a>
+
+    {{ include('pato/_delete_form.html.twig') }}
+{% endblock %}

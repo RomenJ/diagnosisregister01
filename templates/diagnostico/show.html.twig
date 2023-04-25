@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Diagnostico{% endblock %}
+
+{% block body %}
+    <h1>Diagnostico</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Date</th>
+                <td>{{ diagnostico.date ? diagnostico.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Notas</th>
+                <td>{{ diagnostico.notas }}</td>
+            </tr>
+<tr>
+                <th>Patologías detectadas en la sesión diagnóstica</th>
+                   <td>
+                  {% for patologia in diagnostico.patologias %}
+                    <li>  {{ patologia }} </li>
+                    {% endfor %}
+         </ul>
+        </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <a  class="btn btn-info" href="{{ path('app_diagnostico_index') }}">back to list</a>
+
+    <a class="btn btn-warning"  href="{{ path('app_diagnostico_edit', {'id': diagnostico.id}) }}">edit</a>
+
+    {{ include('diagnostico/_delete_form.html.twig') }}
+{% endblock %}

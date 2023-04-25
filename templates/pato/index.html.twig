@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pato index{% endblock %}
+
+{% block body %}
+    <h1>Patologías </h1>
+ <img title="flaticon icon" class="fotoHome1" width="80px" src="/images/fisioterapia.png">
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Codcie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pato in patos %}
+            <tr>
+                
+                <td>{{ pato.titulo }}</td>
+                <td>{{ pato.descripcion }}</td>
+                <td>{{ pato.codcie }}</td>
+                <td>
+                    <a href="{{ path('app_pato_show', {'id': pato.id}) }}">show</a>
+                    <a href="{{ path('app_pato_edit', {'id': pato.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pato_new') }}">Create new</a>
+{% endblock %}

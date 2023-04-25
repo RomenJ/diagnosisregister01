@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+   
+<form>
+   <div class="form-row">
+    <div class="form-group col-md-6 newForm">
+               {{ form_row(form.date, {'label': 'Fecha de la sesión'}) }}
+               {{ form_row(form.paciente) }}
+               {{ form_row(form.notas) }}
+
+ <h5> Patologías detectadas en el paciente</h5> 
+           {% for patologia in form.patologias %}
+    <div class="form-check">
+        {{ form_widget(patologia, {'attr': {'class': 'form-check-input'}}) }}
+        {{ form_label(patologia, patologia.vars.label, {'label_attr': {'class': 'form-check-label'}}) }}
+    </div>
+{% endfor %}
+         
+       </div>
+    </div>
+    <button class="btn btn-primary botonbasic col-md-6">{{ button_label|default('Guardar') }}</button>
+{{ form_end(form) }}
+</form>

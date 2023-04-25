@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Pato{% endblock %}
+
+{% block body %}
+    <h1>Create new Pato</h1>
+
+    {{ include('pato/_form.html.twig') }}
+
+    <a href="{{ path('app_pato_index') }}">back to list</a>
+{% endblock %}
