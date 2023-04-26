@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Factura index{% endblock %}
+
+{% block body %}
+    <h1>Factura index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numerofactura</th>
+                <th>Datefactura</th>
+                <th>Paciente</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for factura in facturas %}
+            <tr>
+                <td>{{ factura.id }}</td>
+                <td>{{ factura.numerofactura }}</td>
+                <td>{{ factura.datefactura ? factura.datefactura|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ factura.paciente }}</td>
+                <td>
+                <p>   <a  class="btn btn-success minimarg" href="{{ path('app_factura_show', {'id': factura.id}) }}">show</a> </p>
+                <p>  <a  class="btn btn-warning minimarg" href="{{ path('app_factura_edit', {'id': factura.id}) }}">edit</a></p>
+                <p>  <a class="btn btn-info minimarg" href="{{ path('app_diagnostico_pdfgenfac', {'id': factura.id}) }}">factura pdf</a></p> 
+                
+              
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_factura_new') }}">Create new</a>
+{% endblock %}

@@ -16,8 +16,15 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
         <style>
-body{
-    
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
+    body{
+
+        background-color: #08FFFF;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%2333BBDD'/%3E%3Cstop offset='1' stop-color='%2308FFFF'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%237B7B7B' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%237B7B7B' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.33'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E");
+        background-attachment: fixed;
+        background-size: cover;
+        min-height:900px;
+
 }
 a{
 
@@ -35,7 +42,7 @@ a{
 
 }
 .UserNoreg{
-margin-left:20px;
+    margin-left:20px;
 
 }
 legend{
@@ -47,9 +54,8 @@ legend{
     margin:5px;
     width:100px;
 }
-        .btnfalse{
+.btnfalse{
     
-
   display: flex;
   background: #91bad6;
   background-image: -webkit-linear-gradient(top, #91bad6, #532bb8);
@@ -81,10 +87,6 @@ legend{
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
-
-
-
-
 }
 
 .contenIdoapp{
@@ -92,9 +94,11 @@ legend{
      animation-duration: 3s;
      background: rgba(255, 255, 255, 0.7);
      border-radius:20px;
-     padding-left:10px;
+     padding-left:20px;
+
      padding-top:20px;
      padding-bottom:20px;
+     margin-left: 30px;
      text-align:center;
      align-items: center;
 
@@ -105,15 +109,68 @@ legend{
     margin:auto;
     width: 500px;
 }
+
+.imagenheader{
+
+    width: 100%;
+    margin-bottom:40px;
+  
+
+}
+
+.textHeader{
+
+
+    text-align:center;
+    padding-top:50px;
+    font-size: 4em;
+    height: 250px;
+    background:rgb(255, 255, 255, 0.7);
+    
+   
+}
+.divheader{
+  background-image: url("/images/fotoheader.png"); /* The image used */
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 250px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  margin-bottom:20px;
+}
+
+.menu1{
+
+
+    margin-left: 20px;
+}
         </style>
     </head>
 
       <body>
 
+{#
+Dompdf: https://github.com/dompdf/dompdf
+
+#}
+
+
+  {#Hacedor de facturas para comprobación de resultados 
   
+  
+  
+  http://www.modelofactura.es/default.aspx
+  
+  #}
+
+  <div class="divheader">
+  <h2 class="textHeader"> Symphony Clinic Center</h2>
+  {#<img class="imagenheader" class="fotoHome1"  src="/images/fotoheader.png">#}
+
+  </div>
   <div class="row">
 
-        <div class="col-sm-2 ">   {% include 'menu.html.twig' %}
+        <div class="col-sm-2 menu1">   {% include 'menu.html.twig' %}
         </div>
         <div class="col-sm-8 contenIdoapp">
          {% block body %}{% endblock %}

@@ -37,9 +37,14 @@ class Paciente
     #[ORM\OneToMany(mappedBy: 'paciente', targetEntity: Diagnostico::class)]
     private Collection $diagnosticos;
 
+    #[ORM\OneToMany(mappedBy: 'paciente', targetEntity: Factura::class)]
+    private Collection $facturas;
+
+
     public function __construct()
     {
         $this->diagnosticos = new ArrayCollection();
+        $this->facturas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -154,4 +159,38 @@ class Paciente
         return $this->name.' '.$this->surname ;
     
     }
+
+   
+
+    /**
+     * @return Collection<int, Factura>
+     */
+    public function getFacturas(): Collection
+    {
+        return $this->facturas;
+    }
+
+    public function addFactura(Factura $factura): self
+    {
+        if (!$this->facturas->contains($factura)) {
+            $this->facturas->add($factura);
+            $factura->setPaciente($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFactura(Factura $factura): self
+    {
+        if ($this->facturas->removeElement($factura)) {
+            // set the owning side to null (unless already changed)
+            if ($factura->getPaciente() === $this) {
+                $factura->setPaciente(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 }

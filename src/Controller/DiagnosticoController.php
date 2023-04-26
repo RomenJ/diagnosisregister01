@@ -66,18 +66,13 @@ class DiagnosticoController extends AbstractController
         ]);
     }
 
-    //generar pdf:
+    //generar pdf (de diagnóstico):
 
 
     #[Route('/{id}/pdfgen', name: 'app_diagnostico_pdfgen', methods: ['GET', 'POST'])]
     public function pdfgen(Request $request, Diagnostico $diagnostico): Response
     {
-    
-       
-    //    $FechaInfo= new DateTime();
-    
   
-
         $data = [
             'imageSrc'  => $this->imageToBase64($this->getParameter('kernel.project_dir') . '/public/images/sf.png'),
             'name'         =>$diagnostico->getPaciente(),
@@ -107,16 +102,6 @@ class DiagnosticoController extends AbstractController
         return $base64;
     }
     
-    
-
-
-
-
-
-
-
-
-
     #[Route('/{id}', name: 'app_diagnostico_delete', methods: ['POST'])]
     public function delete(Request $request, Diagnostico $diagnostico, DiagnosticoRepository $diagnosticoRepository): Response
     {

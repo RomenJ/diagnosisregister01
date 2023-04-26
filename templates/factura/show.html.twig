@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Factura{% endblock %}
+
+{% block body %}
+    <h1>Factura</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ factura.id }}</td>
+            </tr>
+            <tr>
+                <th>Numerofactura</th>
+                <td>{{ factura.numerofactura }}</td>
+            </tr>
+    
+        <tr>
+                <th>Paciente</th>
+                <td>{{ factura.paciente }}</td>
+            </tr>
+
+        <tr>
+                <th>Dirección del cliente</th>
+                <td>{{ factura.paciente.direccion }}</td>
+            </tr>
+
+         <tr>
+                <th>Teléfono del cliente</th>
+                <td>{{ factura.paciente.telefono }}</td>
+            </tr>
+
+
+            <tr>
+                <th>Datefactura</th>
+                <td>{{ factura.datefactura ? factura.datefactura|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+ <tr>
+                <th>IVA de la factura</th>
+                <td>{{ factura.iva }} % </td>
+            </tr>
+ <tr>
+                <th>IRPF sobre el que tributa</th>
+                <td>{{ factura.irpf }} % </td>
+            </tr>
+
+         <tr>
+                <th>Cantidad Base Imponible (precio)</th>
+                <td>{{ factura.cantidadbaseimponible }} €</td>
+            </tr>
+
+ <tr>
+                <th>Total factura </th>
+                <td>{{ factura.totalfactura }} €</td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_factura_index') }}">back to list</a>
+
+    <a href="{{ path('app_factura_edit', {'id': factura.id}) }}">edit</a>
+
+    {{ include('factura/_delete_form.html.twig') }}
+{% endblock %}
